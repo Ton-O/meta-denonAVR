@@ -151,6 +151,7 @@
         "INPUT FLICKR":       {"label":"", "type":"http-get", "command":"http://$DenonURI:$DenonPort/goform/formiPhoneAppDirect.xml?SIFLICKR"},
         "INPUT IRADIO":       {"label":"", "type":"http-get", "command":"http://$DenonURI:$DenonPort/goform/formiPhoneAppDirect.xml?SIIRADIO"},
         "INPUT SERVER":       {"label":"", "type":"http-get", "command":"http://$DenonURI:$DenonPort/goform/formiPhoneAppDirect.xml?SISERVER"},
+        "INPUT ITUNES":       {"label":"", "type":"http-get", "command":"http://$DenonURI:$DenonPort/goform/formiPhoneAppDirect.xml?SIITUNES"},
         "INPUT FAVORITES":    {"label":"", "type":"http-get", "command":"http://$DenonURI:$DenonPort/goform/formiPhoneAppDirect.xml?SIFAVORITES"},
         "INPUT AUX1":         {"label":"", "type":"http-get", "command":"http://$DenonURI:$DenonPort/goform/formiPhoneAppDirect.xml?SIAUX1"},
         "INPUT AUX2":         {"label":"", "type":"http-get", "command":"http://$DenonURI:$DenonPort/goform/formiPhoneAppDirect.xml?SIAUX2"},
