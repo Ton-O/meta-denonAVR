@@ -122,15 +122,15 @@
          },
          "__VOLUMETV": 
             {"type":"telnet", 
-            "command":"{\"call\":\"$MyHEOSIp:23\",\"message\":\"MV40\",\"CallType\":\"dsend\",\"delaytime\":2500}"
+            "command":"{\"call\":\"$MyHEOSIp:23\",\"message\":\"MV34\",\"CallType\":\"dsend\",\"delaytime\":2500}"
          },
          "__VOLUMEMPlayer": 
             {"type":"telnet", 
-            "command":"{\"call\":\"$MyHEOSIp:23\",\"message\":\"MV35\",\"CallType\":\"dsend\",\"delaytime\":2500}"
+            "command":"{\"call\":\"$MyHEOSIp:23\",\"message\":\"MV29\",\"CallType\":\"dsend\",\"delaytime\":2500}"
          },
          "__VOLUMERADIO": 
             {"type":"telnet", 
-            "command":"{\"call\":\"$MyHEOSIp:23\",\"message\":\"MV30\",\"CallType\":\"exec\",\"delaytime\":2500}"
+            "command":"{\"call\":\"$MyHEOSIp:23\",\"message\":\"MV24\",\"CallType\":\"dsend\",\"delaytime\":2500}"
          },
          "__MUTE ON": 
             {"label": "", "type":"static", "command":".",
@@ -144,16 +144,20 @@
             {"type":"telnet", 
             "command":"{\"call\":\"$MyHEOSIp\",\"message\":\"MU?\n\",\"CallType\":\"exec\",\"TelnetParms\":{\"ClearFirst\":true}}",
             "queryresult":"$.Message",             
-            "evalwrite" : [{"variable" : "MuteStatus",     "value" : "DYNAMIK \"$Result\"==\"MUOFF\" ? \"MUTED\": \"NOTMUTED\""}],
-            "evaldo":[{"test":"DYNAMIK \"$MuteStatus\"==\"MUTED\"" ,"then":"__SETMUTE", "or":"__CLEARMUTE"}]
+            "evalwrite" : [{"variable" : "MuteStatus",     "value" : "DYNAMIK (\"$Result\"==\"MUOFF\") ? \"NOTMUTED\": \"MUTED\""}],
+            "evaldo":[{"test":"DYNAMIK \"$MuteStatus\"==\"MUTED\"" ,"then":"__CLEARMUTE", "or":"__SETMUTE"}]
          },
          "__SETMUTE": 
             {"type":"telnet",  
-            "command":"{\"call\":\"$MyHEOSIp\",\"message\":\"MUON\",\"CallType\":\"send\"}"
+            "command":"{\"call\":\"$MyHEOSIp\",\"message\":\"MUON\",\"CallType\":\"send\"}",
+            "evaldo":[{"test":true ,"then":"__GET_SOURCE"}]
+
          },
          "__CLEARMUTE": 
                {"type":"telnet",  
-               "command":"{\"call\":\"$MyHEOSIp\",\"message\":\"MUOFF\",\"CallType\":\"send\"}"
+               "command":"{\"call\":\"$MyHEOSIp\",\"message\":\"MUOFF\",\"CallType\":\"send\"}",
+            "evaldo":[{"test":true ,"then":"__GET_SOURCE"}]
+
          },
          "Input TV":
             {"type":"telnet",  
